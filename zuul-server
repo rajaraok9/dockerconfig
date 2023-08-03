@@ -1,0 +1,23 @@
+#Will start the gateway server @8180
+server.port=8180
+spring.application.name=zuul-server
+spring.cloud.gateway.routes[0].id=item-server
+spring.cloud.gateway.routes[0].uri=lb://item-server
+spring.cloud.gateway.routes[0].predicates[0]=Path=/item-api/item/**
+
+spring.cloud.gateway.routes[1].id=sales-server
+spring.cloud.gateway.routes[1].uri=lb://sales-server
+spring.cloud.gateway.routes[1].predicates[0]=Path=/sales-api/sales/**
+
+#eureka service configuration
+eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka/
+eureka.instance.preferIpAddress=true
+
+
+
+
+
+
+
+
+
